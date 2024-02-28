@@ -18,7 +18,7 @@ const TeamMemberCard: FC<TTeamMemberCardProps> = ({
 }) => {
   return (
     <div>
-      <div className="bg-[#ffe5b483] border border-slate-200 grid grid-rows-auto md:grid-rows-1fr xl:grid-rows-auto  rounded-t-lg ">
+      <div className="bg-[#ffe5b483] dark:bg-[#ffe5b453] border border-slate-200 dark:border-slate-600 grid grid-rows-auto md:grid-rows-1fr xl:grid-rows-auto  rounded-t-lg ">
         <div className="w-full overflow-hidden relative z-10">
           <img
             src={image}

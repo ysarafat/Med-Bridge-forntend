@@ -67,7 +67,7 @@ const Hero = () => {
             </motion.h1>
             <motion.p
               variants={childAnimate}
-              className="text-slate-500 mt-4 lg:text-justify text-center "
+              className="text-slate-500 dark:text-slate-400 mt-4 lg:text-justify text-center "
             >
               Disaster strikes, leaving communities vulnerable. But hope thrives
               within us. This platform connects you to vital health resources,
@@ -76,7 +76,7 @@ const Hero = () => {
             </motion.p>
             <motion.div variants={childAnimate}>
               <Link to={"/supplies"}>
-                <Button className="mt-5 hover:scale-[102%] transition-all w-full lg:w-1/2">
+                <Button className="mt-5 hover:scale-[102%] transition-all w-full lg:w-1/2 ">
                   All Supplies
                 </Button>
               </Link>

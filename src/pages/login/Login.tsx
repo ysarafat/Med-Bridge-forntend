@@ -33,7 +33,7 @@ const Login = () => {
     <div className="h-screen flex justify-center items-center  ">
       <FormWrapper
         onSubmit={onSubmit}
-        className="bg-secondaryColor w-full lg:w-1/3 p-5 rounded-md shadow-lg mx-5 "
+        className="bg-secondaryColor dark:bg-slate-800 w-full lg:w-1/3 p-5 rounded-md shadow-lg mx-5 "
       >
         <h1 className="text-primaryColor text-3xl font-bold text-center mb-4">
           Login

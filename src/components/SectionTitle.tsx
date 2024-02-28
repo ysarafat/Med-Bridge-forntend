@@ -11,7 +11,7 @@ const SectionTitle: FC<TSectionTitleProps> = ({ title, subTitle }) => {
         {title}
       </h1>
       <div className="border-[2.5px] border-primaryColor w-[100px] mx-auto my-2 rounded-md"></div>
-      <p className="text-base font-normal text-slate-700 text-center lg:w-1/2 mx-auto">
+      <p className="text-base font-normal text-slate-700 dark:text-slate-400 text-center lg:w-1/2 mx-auto">
         {subTitle}
       </p>
     </div>

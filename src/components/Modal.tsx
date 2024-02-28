@@ -37,7 +37,7 @@ const Modal = ({ isOpen, onClose, children }: TModalProps) => {
         <div className="h-screen w-full flex justify-center items-center gap-x-5">
           <div
             ref={modalContainerRef}
-            className="bg-slate-100 p-5 rounded-lg md:w-1/2 lg:w-1/3 w-full mx-6"
+            className="bg-slate-100 dark:bg-slate-900 p-5 rounded-lg md:w-1/2 lg:w-1/3 w-full mx-6"
           >
             {children}
           </div>

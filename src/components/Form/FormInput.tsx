@@ -32,7 +32,7 @@ const FormInput: FC<TFormInputProps> = ({
           id=""
           rows={10}
           defaultValue={defaultValue}
-          className="input"
+          className="input text-black dark:text-slate-100 bg-white dark:bg-slate-800"
           {...register(name, { required: required })}
         ></textarea>
       ) : (
@@ -40,7 +40,7 @@ const FormInput: FC<TFormInputProps> = ({
           type={type}
           defaultValue={defaultValue}
           className={cn(
-            "input file:bg-primaryColor file:border-none file:text-white file:rounded-md",
+            "input file:bg-primaryColor file:border-none file:text-white text-black dark:text-slate-100 bg-white dark:bg-slate-800 file:rounded-md",
             errors[name]?.type === "required" &&
               "border-rose-500    focus:ring-rose-500"
           )}

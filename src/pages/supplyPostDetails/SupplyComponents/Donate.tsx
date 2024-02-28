@@ -49,7 +49,7 @@ const Donate: FC<TDonateProps> = ({ data: postData }) => {
     }
   };
   return (
-    <div>
+    <div className="">
       {error && (
         <div className="text-center text-rose-400">
           {

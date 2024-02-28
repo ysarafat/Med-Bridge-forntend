@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Container from "./Container";
 import Logo from "./Logo";
 import Logout from "./Logout";
+import ThemeMode from "./Theme/ThemeMode";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
@@ -41,40 +42,49 @@ const Navbar = () => {
                 <Logout />
               </>
             )}
+            <ThemeMode />
           </div>
-          <Sheet>
-            <SheetTrigger className="md:hidden pr-4 hover:opacity-75 transition">
-              <Menu />
-            </SheetTrigger>
-            <SheetContent className="p-0 bg-white" side="right">
-              <div className="flex flex-col gap-y-3 mt-10 px-4">
-                {" "}
-                <Link to={"/supplies"} className="text-center">
-                  All Supplies
-                </Link>
-                {!token && (
-                  <Link to={"/login"}>
-                    <Button
-                      variant={"outline"}
-                      className={cn(
-                        "hover:bg-secondaryColor/20 hover:border-primaryColor w-full"
-                      )}
-                    >
-                      Login
-                    </Button>
+          <div className="flex items-center gap-x-5">
+            <div className="md:hidden">
+              <ThemeMode />
+            </div>
+            <Sheet>
+              <SheetTrigger className="md:hidden pr-4 hover:opacity-75 transition">
+                <Menu />
+              </SheetTrigger>
+              <SheetContent
+                className="p-0 bg-white dark:bg-slate-800"
+                side="right"
+              >
+                <div className="flex flex-col gap-y-3 mt-10 px-4">
+                  {" "}
+                  <Link to={"/supplies"} className="text-center">
+                    All Supplies
                   </Link>
-                )}
-                {token && (
-                  <>
-                    <Link to={"/dashboard"}>
-                      <Button className="w-full">Dashboard</Button>
+                  {!token && (
+                    <Link to={"/login"}>
+                      <Button
+                        variant={"outline"}
+                        className={cn(
+                          "hover:bg-secondaryColor/20 hover:border-primaryColor w-full"
+                        )}
+                      >
+                        Login
+                      </Button>
                     </Link>
-                    <Logout />
-                  </>
-                )}
-              </div>
-            </SheetContent>
-          </Sheet>
+                  )}
+                  {token && (
+                    <>
+                      <Link to={"/dashboard"}>
+                        <Button className="w-full">Dashboard</Button>
+                      </Link>
+                      <Logout />
+                    </>
+                  )}
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </Container>
     </nav>

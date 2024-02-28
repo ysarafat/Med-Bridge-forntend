@@ -10,7 +10,7 @@ type TPostCardProps = {
 };
 const PostCard: FC<TPostCardProps> = ({ image, title, category, qty, id }) => {
   return (
-    <div className="border border-slate-200 p-4 rounded-lg shadow hover:scale-[102%] cursor-pointer transition-all grid grid-rows-auto md:grid-rows-1fr xl:grid-rows-auto">
+    <div className="border border-slate-200 dark:border-slate-600 p-4 rounded-lg shadow hover:scale-[102%] cursor-pointer transition-all grid grid-rows-auto md:grid-rows-1fr xl:grid-rows-auto">
       <img src={image} alt={title} className="rounded-lg w-full h-[225px]" />
       <div>
         <h1 className="text-xl font-semibold text-center my-2">{title}</h1>

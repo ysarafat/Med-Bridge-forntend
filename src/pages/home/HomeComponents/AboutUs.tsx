@@ -55,9 +55,9 @@ const AboutUs = () => {
         animate={inView ? "visible" : "hidden"}
         variants={animate}
         ref={ref}
-        className="bg-gradient-to-r from-rose-100 to-teal-100 p-4 overflow-hidden"
+        className="bg-gradient-to-r from-rose-100 to-teal-100 dark:from-rose-100/15 dark:to-teal-100/30  p-4 overflow-hidden"
       >
-        <Container className="bg-white rounded-lg flex flex-col md:flex-row items-center gap-8">
+        <Container className="bg-white dark:bg-transparent rounded-lg flex flex-col md:flex-row items-center gap-8">
           <motion.div className="py-5 w-full">
             <motion.p
               variants={childAnimate}
@@ -68,11 +68,14 @@ const AboutUs = () => {
             </motion.p>
             <motion.h1
               variants={childAnimate}
-              className="text-4xl font-extrabold mt-2 mb-3"
+              className="text-4xl font-extrabold mt-2 mb-3 text-slate-900 dark:text-slate-200"
             >
               Our Dream is Global Health and Medical Supply Distribution
             </motion.h1>
-            <motion.p variants={childAnimate} className="text-slate-500">
+            <motion.p
+              variants={childAnimate}
+              className="text-slate-500 dark:text-slate-300"
+            >
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit
               esse debitis amet provident eveniet fuga fugit unde soluta cumque
               architecto quisquam facere numquam a perspiciatis voluptas, natus
@@ -81,10 +84,10 @@ const AboutUs = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 mt-5 gap-4">
               <motion.div
                 variants={childAnimate}
-                className="border border-slate-200 rounded-lg bg-yellow-500/5"
+                className="border border-slate-200  dark:border-slate-600 rounded-lg bg-yellow-500/5"
               >
-                <div className="text-slate-500 p-4">
-                  <span className="block text-4xl font-bold text-black">
+                <div className="text-slate-500 dark:text-slate-300 p-4">
+                  <span className="block text-4xl font-bold text-black dark:text-slate-200">
                     3.5
                   </span>
                   Years Experience
@@ -92,10 +95,10 @@ const AboutUs = () => {
               </motion.div>
               <motion.div
                 variants={childAnimate}
-                className="border border-slate-200 rounded-lg bg-pink-500/5"
+                className="border border-slate-200  dark:border-slate-600 rounded-lg bg-pink-500/5"
               >
-                <div className="text-slate-500 p-4">
-                  <span className="block text-4xl font-bold text-black">
+                <div className="text-slate-500 dark:text-slate-300 p-4">
+                  <span className="block text-4xl font-bold text-black dark:text-slate-200">
                     25
                   </span>
                   Project Challenge
@@ -103,10 +106,10 @@ const AboutUs = () => {
               </motion.div>
               <motion.div
                 variants={childAnimate}
-                className="border border-slate-200 rounded-lg bg-green-500/5"
+                className="border border-slate-200 dark:border-slate-600 rounded-lg bg-green-500/5"
               >
-                <div className="text-slate-500 p-4">
-                  <span className="block text-4xl font-bold text-black">
+                <div className="text-slate-500 dark:text-slate-300 p-4">
+                  <span className="block text-4xl font-bold text-black dark:text-slate-200">
                     850+
                   </span>
                   Positive Reviews
