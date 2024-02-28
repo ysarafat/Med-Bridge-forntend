@@ -10,14 +10,17 @@ import UserInfo from "./UserInfo";
 
 const MobileSidebar = () => {
   return (
-    <div className="flex items-center justify-between px-4 py-2 bg-slate-50 border-b md:hidden">
+    <div className="flex items-center justify-between px-4 py-2 bg-slate-50 dark:bg-slate-900 border-b md:hidden">
       <Sheet>
         <SheetTrigger>
           <Button variant="outline" size="icon" className="md:hidden">
             <Menu />
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="p-0 py-10 bg-black">
+        <SheetContent
+          side="left"
+          className="p-0 py-10 bg-slate-950 dark:bg-slate-800"
+        >
           <div className="space-y-1 mb-10">
             {routes.map((route) => (
               <NavLink
