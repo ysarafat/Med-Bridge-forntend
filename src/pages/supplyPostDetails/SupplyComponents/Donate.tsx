@@ -2,6 +2,11 @@
 import FormInput from "@/components/Form/FormInput";
 import FormWrapper from "@/components/Form/FormWrapper";
 import { Button } from "@/components/ui/button";
+import {
+  useAddDonorsMutation,
+  useGetSingleDonorQuery,
+  useUpdateDonorAmountMutation,
+} from "@/redux/features/donores/donorsApi";
 import { useUpdatePostMutation } from "@/redux/features/supplyPost/supplyPostApi";
 import { useGetUserQuery } from "@/redux/features/user/usersApi";
 import { useAppSelector } from "@/redux/hook";
@@ -27,8 +32,15 @@ type TUser = {
 };
 const Donate: FC<TDonateProps> = ({ data: postData }) => {
   const user = useAppSelector(useCurrentUser) as TUser | null;
-  const { data: userData } = useGetUserQuery(user?.email);
+  const { data: userData, isLoading: userLoading } = useGetUserQuery(
+    user?.email
+  );
   const [updatePost, { error, isLoading }] = useUpdatePostMutation();
+  const [addDonor] = useAddDonorsMutation();
+  const { data: donorData } = useGetSingleDonorQuery(userData?.data?.email, {
+    skip: userLoading,
+  });
+  const [updateDonorAmount] = useUpdateDonorAmountMutation();
 
   const navigate = useNavigate();
   const onSubmit = async (data: FieldValues) => {
@@ -43,7 +55,25 @@ const Donate: FC<TDonateProps> = ({ data: postData }) => {
       id: postData?._id,
       postData: donateData,
     }).unwrap();
-    if (response.success) {
+
+    // update donar for leaderboard
+    const newDonorData = {
+      name: userData?.data?.name,
+      email: userData?.data?.email,
+      totalAmount: Number(data?.qty),
+    };
+
+    let addDonorResponse;
+    if (!donorData?.data?.email) {
+      addDonorResponse = await addDonor(newDonorData).unwrap();
+    } else {
+      addDonorResponse = await updateDonorAmount({
+        email: userData?.data?.email,
+        totalAmount: donorData?.data?.totalAmount + Number(data?.qty),
+      }).unwrap();
+    }
+
+    if (response.success && addDonorResponse.success) {
       toast.success("Donation received successfully ");
       navigate("/dashboard");
     }
