@@ -6,6 +6,7 @@ import Dashboard from "@/pages/Dashboard/Dashboard";
 import Supplies from "@/pages/Dashboard/Supplies";
 import UpdatePost from "@/pages/Dashboard/UpdatePost";
 import NotFound from "@/pages/Error/NotFound";
+import Leaderboard from "@/pages/Leaderboard/Leaderboard";
 import Home from "@/pages/home/Home";
 import Login from "@/pages/login/Login";
 import Register from "@/pages/register/Register";
@@ -30,6 +31,10 @@ const routes = createBrowserRouter([
       {
         path: "supplies/:id",
         element: <SupplyPostDetails />,
+      },
+      {
+        path: "/leaderboard",
+        element: <Leaderboard />,
       },
     ],
   },

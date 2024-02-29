@@ -21,7 +21,9 @@ const Navbar = () => {
         <div className=" ">
           <div className=" hidden md:flex gap-x-5 items-center">
             {" "}
+            <Link to={"/"}>Home</Link>
             <Link to={"/supplies"}>All Supplies</Link>
+            <Link to={"/leaderboard"}>Leaderboard</Link>
             {!token && (
               <Link to={"/login"}>
                 <Button
@@ -57,9 +59,14 @@ const Navbar = () => {
                 side="right"
               >
                 <div className="flex flex-col gap-y-3 mt-10 px-4">
-                  {" "}
+                  <Link className="text-center" to={"/"}>
+                    Home
+                  </Link>
                   <Link to={"/supplies"} className="text-center">
                     All Supplies
+                  </Link>
+                  <Link className="text-center" to={"/leaderboard"}>
+                    Leaderboard
                   </Link>
                   {!token && (
                     <Link to={"/login"}>
