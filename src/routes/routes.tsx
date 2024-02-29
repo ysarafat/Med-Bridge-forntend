@@ -1,6 +1,7 @@
 import App from "@/App";
 import DashboardLayout from "@/components/layouts/DashboardLayout";
 import ProtectedRoute from "@/components/layouts/ProtectedRoute";
+import AboutUs from "@/pages/AboutUs/AboutUs";
 import AddSupply from "@/pages/Dashboard/AddSupply";
 import Dashboard from "@/pages/Dashboard/Dashboard";
 import Supplies from "@/pages/Dashboard/Supplies";
@@ -35,6 +36,10 @@ const routes = createBrowserRouter([
       {
         path: "/leaderboard",
         element: <Leaderboard />,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs />,
       },
     ],
   },
