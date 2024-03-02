@@ -16,7 +16,7 @@ const CommentSection: FC<{ item: TComment }> = ({ item }) => {
         <div className="flex  items-center gap-3">
           <p className="text-lg font-bold">{item?.name}</p>
           <p className="text-sm text-slate-500">
-            {moment().startOf("hour").fromNow()}
+            {moment(item?.commentAt).subtract(1, "days").calendar()}
           </p>
         </div>
         {item.comment}
