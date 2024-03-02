@@ -8,6 +8,7 @@ import Supplies from "@/pages/Dashboard/Supplies";
 import UpdatePost from "@/pages/Dashboard/UpdatePost";
 import NotFound from "@/pages/Error/NotFound";
 import Leaderboard from "@/pages/Leaderboard/Leaderboard";
+import Volunteer from "@/pages/Volunteer/Volunteer";
 import Home from "@/pages/home/Home";
 import Login from "@/pages/login/Login";
 import Register from "@/pages/register/Register";
@@ -40,6 +41,10 @@ const routes = createBrowserRouter([
       {
         path: "/about-us",
         element: <AboutUs />,
+      },
+      {
+        path: "/volunteer",
+        element: <Volunteer />,
       },
     ],
   },

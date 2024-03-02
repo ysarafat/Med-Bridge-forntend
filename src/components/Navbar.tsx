@@ -3,7 +3,6 @@ import { useAppSelector } from "@/redux/hook";
 import { useCurrentToken } from "@/redux/store";
 import { Menu } from "lucide-react";
 import { Link } from "react-router-dom";
-import Container from "./Container";
 import Logo from "./Logo";
 import Logout from "./Logout";
 import ThemeMode from "./Theme/ThemeMode";
@@ -14,16 +13,19 @@ const Navbar = () => {
   const token = useAppSelector(useCurrentToken);
   return (
     <nav className=" py-4 border-b ">
-      <Container className="flex justify-between items-center">
+      <div className="flex justify-between items-center px-5 ">
         <div>
           <Logo />
         </div>
         <div className=" ">
-          <div className=" hidden md:flex gap-x-5 items-center">
+          <div className=" hidden lg:flex gap-x-5 items-center">
             {" "}
             <Link to={"/"}>Home</Link>
             <Link to={"/supplies"}>All Supplies</Link>
             <Link to={"/leaderboard"}>Leaderboard</Link>
+            <Link to={"/volunteer"}>Join as a Volunteer</Link>
+            <Link to={"/community"}>Community</Link>
+            <Link to={"/about-us"}>About Us</Link>
             {!token && (
               <Link to={"/login"}>
                 <Button
@@ -47,11 +49,11 @@ const Navbar = () => {
             <ThemeMode />
           </div>
           <div className="flex items-center gap-x-5">
-            <div className="md:hidden">
+            <div className="lg:hidden">
               <ThemeMode />
             </div>
             <Sheet>
-              <SheetTrigger className="md:hidden pr-4 hover:opacity-75 transition">
+              <SheetTrigger className="lg:hidden  hover:opacity-75 transition">
                 <Menu />
               </SheetTrigger>
               <SheetContent
@@ -67,6 +69,15 @@ const Navbar = () => {
                   </Link>
                   <Link className="text-center" to={"/leaderboard"}>
                     Leaderboard
+                  </Link>
+                  <Link className="text-center" to={"/volunteer"}>
+                    Join as a Volunteer
+                  </Link>
+                  <Link className="text-center" to={"/community"}>
+                    Community
+                  </Link>
+                  <Link className="text-center" to={"/about-us"}>
+                    About Us
                   </Link>
                   {!token && (
                     <Link to={"/login"}>
@@ -93,7 +104,7 @@ const Navbar = () => {
             </Sheet>
           </div>
         </div>
-      </Container>
+      </div>
     </nav>
   );
 };
