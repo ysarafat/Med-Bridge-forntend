@@ -8,6 +8,7 @@ type TFormInputProps = {
   placeholder?: string;
   required?: boolean;
   defaultValue?: string | number;
+  rows?: number;
 };
 const FormInput: FC<TFormInputProps> = ({
   name,
@@ -16,6 +17,7 @@ const FormInput: FC<TFormInputProps> = ({
   placeholder,
   required = true,
   defaultValue,
+  rows = 10,
 }) => {
   const {
     register,
@@ -30,7 +32,7 @@ const FormInput: FC<TFormInputProps> = ({
       {type === "textarea" ? (
         <textarea
           id=""
-          rows={10}
+          rows={rows}
           defaultValue={defaultValue}
           className="input text-black dark:text-slate-100 bg-white dark:bg-slate-800"
           {...register(name, { required: required })}

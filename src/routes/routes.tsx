@@ -2,6 +2,7 @@ import App from "@/App";
 import DashboardLayout from "@/components/layouts/DashboardLayout";
 import ProtectedRoute from "@/components/layouts/ProtectedRoute";
 import AboutUs from "@/pages/AboutUs/AboutUs";
+import GratitudeWall from "@/pages/Community/GratitudeWall";
 import AddSupply from "@/pages/Dashboard/AddSupply";
 import CreateTestimonial from "@/pages/Dashboard/CreateTestimonial";
 import Dashboard from "@/pages/Dashboard/Dashboard";
@@ -48,6 +49,10 @@ const routes = createBrowserRouter([
       {
         path: "/volunteer",
         element: <Volunteer />,
+      },
+      {
+        path: "/community",
+        element: <GratitudeWall />,
       },
     ],
   },
