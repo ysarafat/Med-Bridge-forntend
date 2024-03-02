@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Container, Home, LayoutDashboard } from "lucide-react";
+import { Container, Home, LayoutDashboard, Star } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import UserInfo from "./UserInfo";
 
@@ -16,6 +16,12 @@ export const routes = [
     icon: Container,
     href: "/dashboard/supplies",
     color: "text-green-700",
+  },
+  {
+    label: "Create Testimonial",
+    icon: Star,
+    href: "/dashboard/create-testimonial",
+    color: "text-yellow-700",
   },
   {
     label: "Back Home",

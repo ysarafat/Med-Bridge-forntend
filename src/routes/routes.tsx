@@ -3,9 +3,12 @@ import DashboardLayout from "@/components/layouts/DashboardLayout";
 import ProtectedRoute from "@/components/layouts/ProtectedRoute";
 import AboutUs from "@/pages/AboutUs/AboutUs";
 import AddSupply from "@/pages/Dashboard/AddSupply";
+import CreateTestimonial from "@/pages/Dashboard/CreateTestimonial";
 import Dashboard from "@/pages/Dashboard/Dashboard";
+import DonatedPost from "@/pages/Dashboard/DonatedPost";
 import Supplies from "@/pages/Dashboard/Supplies";
 import UpdatePost from "@/pages/Dashboard/UpdatePost";
+
 import NotFound from "@/pages/Error/NotFound";
 import Leaderboard from "@/pages/Leaderboard/Leaderboard";
 import Volunteer from "@/pages/Volunteer/Volunteer";
@@ -71,6 +74,14 @@ const routes = createBrowserRouter([
       {
         path: "update-supply/:id",
         element: <UpdatePost />,
+      },
+      {
+        path: "create-testimonial",
+        element: <DonatedPost />,
+      },
+      {
+        path: "create-testimonial/:id",
+        element: <CreateTestimonial />,
       },
     ],
   },

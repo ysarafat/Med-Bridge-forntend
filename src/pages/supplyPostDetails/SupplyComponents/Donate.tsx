@@ -25,7 +25,7 @@ type TDonateProps = {
     description: string;
   };
 };
-type TUser = {
+export type TUser = {
   _id: string;
   name: string;
   email: string;
@@ -41,8 +41,8 @@ const Donate: FC<TDonateProps> = ({ data: postData }) => {
     skip: userLoading,
   });
   const [updateDonorAmount] = useUpdateDonorAmountMutation();
-
   const navigate = useNavigate();
+
   const onSubmit = async (data: FieldValues) => {
     const donateData = {
       image: postData?.image,
@@ -61,15 +61,18 @@ const Donate: FC<TDonateProps> = ({ data: postData }) => {
       name: userData?.data?.name,
       email: userData?.data?.email,
       totalAmount: Number(data?.qty),
+      post: [postData._id],
     };
 
     let addDonorResponse;
+
     if (!donorData?.data?.email) {
       addDonorResponse = await addDonor(newDonorData).unwrap();
     } else {
       addDonorResponse = await updateDonorAmount({
         email: userData?.data?.email,
         totalAmount: donorData?.data?.totalAmount + Number(data?.qty),
+        post: postData._id,
       }).unwrap();
     }
 

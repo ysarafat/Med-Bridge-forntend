@@ -19,10 +19,10 @@ export const donorsApi = baseAPi.injectEndpoints({
       invalidatesTags: ["Donor"],
     }),
     updateDonorAmount: builder.mutation({
-      query: ({ email, totalAmount }) => ({
+      query: ({ email, totalAmount, post }) => ({
         url: `/update-donate-amount/${email}`,
         method: "PATCH",
-        body: { totalAmount: totalAmount },
+        body: { totalAmount: totalAmount, post: post },
       }),
       invalidatesTags: ["Donor"],
     }),
