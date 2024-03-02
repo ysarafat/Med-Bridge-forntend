@@ -13,7 +13,7 @@ const baseAPi = createApi({
     },
   }),
   endpoints: () => ({}),
-  tagTypes: ["Post", "Donor"],
+  tagTypes: ["Post", "Donor", "Volunteer"],
 });
 
 export default baseAPi;

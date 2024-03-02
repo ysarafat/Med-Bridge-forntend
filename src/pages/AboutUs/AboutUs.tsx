@@ -129,7 +129,7 @@ const AboutUs = () => {
             Volunteers
           </h1>
           {isLoading && (
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5  mt-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5  mt-12">
               <VolunteerCardSkeleton />
               <VolunteerCardSkeleton />
               <VolunteerCardSkeleton />
@@ -140,13 +140,12 @@ const AboutUs = () => {
               <VolunteerCardSkeleton />
             </div>
           )}
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5  mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5  mt-12">
             {data?.data?.map((volunteer: TVolunteer) => (
               <VolunteerSection key={volunteer._id} volunteer={volunteer} />
             ))}
           </div>
           <div className="mt-8 w-full mx-auto md:w-1/3 text-center ">
-            {" "}
             <Link to={"/volunteer"}>
               <Button className="w-full" size={"lg"}>
                 Joni Today as a Volunteer

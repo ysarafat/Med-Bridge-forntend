@@ -8,9 +8,11 @@ const volunteerApi = baseAPi.injectEndpoints({
         method: "POST",
         body: volunteerData,
       }),
+      invalidatesTags: ["Volunteer"],
     }),
     allVolunteer: builder.query({
       query: () => "/all-volunteer",
+      providesTags: ["Volunteer"],
     }),
   }),
 });
