@@ -17,7 +17,7 @@ const CreateTestimonial = () => {
   const { data: userData } = useGetUserQuery(user?.email);
   const [addTestimonials, { isLoading }] =
     useAddTestimonialsMutation(undefined);
-  console.log();
+
   const onSubmit = async (data: FieldValues) => {
     data.postId = id;
     data.name = userData?.data?.name;

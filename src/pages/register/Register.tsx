@@ -3,6 +3,7 @@ import FormInput from "@/components/Form/FormInput";
 import FormWrapper from "@/components/Form/FormWrapper";
 import { Button } from "@/components/ui/button";
 import { useRegisterMutation } from "@/redux/features/auth/authApi";
+import uploadImage from "@/utils/uploadImage";
 import { useState } from "react";
 import { FieldValues } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -11,9 +12,12 @@ import { toast } from "sonner";
 const Register = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
-  const [register, { error }] = useRegisterMutation();
-  console.log(error);
+  const [register, { isLoading, error }] = useRegisterMutation();
+  const formData = new FormData();
   const onSubmit = async (data: FieldValues) => {
+    formData.append("image", data.image[0]);
+    const image = await uploadImage(formData);
+
     setErrorMessage("");
     if (data.password !== data.confirmPassword) {
       return setErrorMessage("Password don't match");
@@ -26,6 +30,7 @@ const Register = () => {
       name: data.name,
       email: data.email,
       password: data.password,
+      image: image,
     };
     console.log(userData);
     const response = await register(userData).unwrap();
@@ -56,6 +61,7 @@ const Register = () => {
             label="Full Name"
             placeholder="Md Rakib Khan"
           />
+          <FormInput name="image" type="file" label="Image" />
           <FormInput
             name="email"
             type="email"
@@ -76,8 +82,8 @@ const Register = () => {
             placeholder="********"
           />
         </div>
-        <Button type="submit" className="w-full mt-5">
-          Register
+        <Button type="submit" className="w-full mt-5" disabled={isLoading}>
+          {isLoading ? "Creating Account..." : "Register"}
         </Button>
         <div className="mt-4 text-center">
           Already have an account?{" "}
