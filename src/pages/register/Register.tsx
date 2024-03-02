@@ -11,10 +11,12 @@ import { toast } from "sonner";
 
 const Register = () => {
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const [register, { isLoading, error }] = useRegisterMutation();
+  const [register, { error }] = useRegisterMutation();
   const formData = new FormData();
   const onSubmit = async (data: FieldValues) => {
+    setIsLoading(true);
     formData.append("image", data.image[0]);
     const image = await uploadImage(formData);
 
@@ -32,11 +34,16 @@ const Register = () => {
       password: data.password,
       image: image,
     };
-    console.log(userData);
-    const response = await register(userData).unwrap();
-    toast.success(response.message);
-    if (response.success) {
-      navigate("/login");
+
+    try {
+      const response = await register(userData).unwrap();
+      toast.success(response.message);
+      if (response.success) {
+        navigate("/login");
+        setIsLoading(false);
+      }
+    } catch (error) {
+      setIsLoading(false);
     }
   };
   return (

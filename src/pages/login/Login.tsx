@@ -6,6 +6,7 @@ import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { setUser } from "@/redux/features/auth/authSlice";
 import { useAppDispatch } from "@/redux/hook";
 import { verifyUser } from "@/utils/verifyUser";
+import { useState } from "react";
 import { FieldValues } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -16,17 +17,24 @@ const Login = () => {
   const [login, { error }] = useLoginMutation();
   // @ts-ignore
   const errorMessage = error?.data?.message || null;
+  const [isLoading, setIsLoading] = useState(false);
   const onSubmit = async (data: FieldValues) => {
+    setIsLoading(true);
     const userCredential = {
       email: data?.email,
       password: data?.password,
     };
-    const response = await login(userCredential).unwrap();
-    const user = verifyUser(response.token);
-    dispatch(setUser({ user, token: response.token }));
-    if (response.success) {
-      toast.success(response.message);
-      navigate("/");
+    try {
+      const response = await login(userCredential).unwrap();
+      const user = verifyUser(response.token);
+      dispatch(setUser({ user, token: response.token }));
+      if (response.success) {
+        toast.success(response.message);
+        navigate("/");
+        setIsLoading(false);
+      }
+    } catch (error) {
+      setIsLoading(false);
     }
   };
   return (
@@ -60,8 +68,8 @@ const Login = () => {
             placeholder="********"
           />
         </div>
-        <Button type="submit" className="w-full mt-5">
-          Login
+        <Button type="submit" className="w-full mt-5" disabled={isLoading}>
+          {isLoading ? "Logging..." : "Login"}
         </Button>
         <div className="mt-4 text-center">
           Don’t have an account?{" "}
