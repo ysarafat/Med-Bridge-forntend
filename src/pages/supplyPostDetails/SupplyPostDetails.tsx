@@ -2,6 +2,7 @@ import Container from "@/components/Container";
 import Modal from "@/components/Modal";
 import SectionTitle from "@/components/SectionTitle";
 import PostDetailsSkeleton from "@/components/Skeleton/PostDetailsSkeleton";
+import TestimonialsSkeleton from "@/components/Skeleton/TestimonialsSkeleton";
 import { Button } from "@/components/ui/button";
 import { useGetSinglePostQuery } from "@/redux/features/supplyPost/supplyPostApi";
 import { useGetTestimonialsByPostIdQuery } from "@/redux/features/testimonials/testimonialsApi";
@@ -21,7 +22,8 @@ const SupplyPostDetails = () => {
   const [modal, setModal] = useState(false);
   const { id } = useParams();
   const { data, isLoading } = useGetSinglePostQuery(id);
-  const { data: testimonialData } = useGetTestimonialsByPostIdQuery(id);
+  const { data: testimonialData, isLoading: testimonialLoading } =
+    useGetTestimonialsByPostIdQuery(id);
 
   const handleModal = () => {
     setModal((prev) => !prev);
@@ -81,7 +83,8 @@ const SupplyPostDetails = () => {
           subTitle="Here displayed our donors testimonials"
         />
       </div>
-      <div className=" grid grid-cols-2 gap-8 ">
+      {testimonialLoading && <TestimonialsSkeleton />}
+      <div className=" grid grid-col-1 md:grid-cols-2 gap-5 ">
         {testimonialData?.data?.map((item: TTestimonials) => (
           <div className="border flex items-center gap-x-3 p-3 rounded-lg">
             <div className="w-20 h-20">
